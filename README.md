@@ -7,8 +7,7 @@ solve few-shot classification.
 This repository contains original implementation of the paper 'Diversity with Cooperation: Ensemble Methods for Few-Shot Classification' by Nikita Dvornik, Cordelia Schmid and Julien Mairal.
 The paper is available at https://arxiv.org/abs/1903.11341
 
-## Citing
-Please cite BlitzNet in your publications if it helps your research:
+## Cite
 
     @inproceedings{dvornik2019diversity,
       title = {Diversity with Cooperation: Ensemble Methods for Few-Shot Classification,

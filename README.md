@@ -9,7 +9,7 @@ The paper is available at https://arxiv.org/abs/1903.11341
 
 ## Cite
 
-    @inproceedings{dvornik2019diversity,
+@inproceedings{dvornik2019diversity,
       title = {Diversity with Cooperation: Ensemble Methods for Few-Shot Classification,
       author = {Dvornik, Nikita and Schmid, Cordelia and Mairal, Julien},
       booktitle = {{IEEE International Conference on Computer Vision (ICCV)}},
@@ -45,7 +45,7 @@ python singles/test.py --model.model_name=wideresnet --data.dataset=mini_imagene
 ```
 This command will generate 1000 5-shot problems, test previously learned feature extractor "wideresnet" on them and report mean accuracy with confidence intervals. To test 1-shot performance, run the command with `--data.test_shot=1`.
 
-## Training and ensembles with relations
+## Training and testing ensembles with relations
 For example, if you want to train a Robust ensemble of 10 ResNets on mini-ImageNet
 ```sh
 python ensembles/train.py --model.model_name=deep_robust10 --data.dataset=mini_imagenet --model.backbone=deep --ens.num_heads=10 --ens.relation_type=robust

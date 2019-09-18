@@ -52,9 +52,6 @@ def get_omniglot_transform(*args, **kwargs):
 
 def get_mini_imagenet_transform_augmented(backbone, mode, aug_dict):
     train = mode == 'train'
-    if train and aug_dict['random_aug']:
-        aug_dict = get_random_aug_params()
-        print('AUG DICT', aug_dict)
 
     transform_list = []
     if backbone == 'deep':
@@ -161,19 +158,3 @@ def back_to_image(tarr, pil=True):
         return Image.fromarray((arr[0].numpy() * 255).astype('uint8'))
     else:
         return arr
-
-
-def get_random_aug_params():
-    aug_dict = {}
-    aug_dict['resize'] = np.random.randint(238, 257)
-    aug_dict['color_jitter'] = bool(np.random.binomial(1, 0.7))
-    aug_dict['color_brightness'] = np.random.uniform(0, 0.7)
-    aug_dict['color_saturation'] = np.random.uniform(0, 0.7)
-    aug_dict['color_contrast'] = np.random.uniform(0, 0.7)
-    aug_dict['color_hue'] = np.random.uniform(0, 0.08)
-    aug_dict['random_noise'] = bool(np.random.binomial(1, 0.7))
-    aug_dict['noise_prob'] = np.random.uniform(0, 0.8)
-    aug_dict['noise_sigma'] = np.random.uniform(0, 0.15)
-    aug_dict['noise_modulate'] = bool(np.random.binomial(1, 0.4))
-    aug_dict['box_out'] = False
-    return aug_dict

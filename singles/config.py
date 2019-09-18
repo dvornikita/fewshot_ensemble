@@ -99,12 +99,6 @@ parser.add_argument('--aug.random_noise', action='store_true', help="To add rand
 parser.add_argument('--aug.noise_prob', type=float, default=0.9, help="")
 parser.add_argument('--aug.noise_sigma', type=float, default=0.01, help="")
 parser.add_argument('--aug.noise_modulate', type=bool, default=1, help="")
-#box_out params
-parser.add_argument('--aug.box_out', action='store_true', help="Fills random boxes with random numbers")
-parser.add_argument('--aug.box_out_prob', type=float, default=0.3, help="Fills random boxes with random numbers")
-parser.add_argument('--aug.box_max_size', type=int, default=0, help="Max box size")
-parser.add_argument('--aug.box_min_size', type=int, default=-1, help="Max box size")
-
 
 
 # test args

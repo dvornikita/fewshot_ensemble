@@ -9,7 +9,7 @@ The paper is available at https://arxiv.org/abs/1903.11341
 
 ## Cite
 
-@inproceedings{dvornik2019diversity,
+    @inproceedings{dvornik2019diversity,
       title = {Diversity with Cooperation: Ensemble Methods for Few-Shot Classification,
       author = {Dvornik, Nikita and Schmid, Cordelia and Mairal, Julien},
       booktitle = {{IEEE International Conference on Computer Vision (ICCV)}},

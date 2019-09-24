@@ -4,20 +4,14 @@ import os
 import torch
 import numpy as np
 from tqdm import tqdm
-from functools import partial
 import local_setup
 
-from data.data_utils import sample_to_device
 from data.helpers import get_test_sampler
-from models.resnets import resnet18
-from models.wide_resnet import wide_resnet
-from models.ensembles import Ensemble
 from models.losses import get_val_loss_fn_ensemble as get_val_loss_fn
 from models.utils import EnsembleCheckPointer as CheckPointer
 from models.helpers import get_model
 from ensembles.config import args
-from paths import MINI_IMAGENET_ROOT, CUB_ROOT, TIERED_IMAGENET_ROOT
-from utils import print_res, device, set_determ
+from utils import print_res, set_determ
 
 
 def main():
@@ -34,7 +28,7 @@ def main():
     model = get_model(ncls, args, ensemble=True)
     model.eval()
 
-    checkpointer = CheckPointer(args, model)
+    checkpointer = CheckPointer('ensembles', args, model)
     ckpt_path = checkpointer.best_ckpt
     if os.path.isfile(ckpt_path):
         start_epoch, best_val_loss, best_val_acc, waiting_for =\
@@ -56,10 +50,6 @@ def main():
     for sample in tqdm(test_sampler):
         with torch.no_grad():
             _, stats_dict, pred_dict = loss(model, sample)
-            if args['test.label_prop']:
-                from utils.utils import update_test_sample
-                sample = update_test_sample(sample, stats_dict['preds'])
-                _, stats_dict, _ = loss(model, sample)
         losses.append(stats_dict['loss'])
         voted_accs.append(stats_dict['voted_acc'] * 100)
         probsum_accs.append(stats_dict['probsum_acc'] * 100)

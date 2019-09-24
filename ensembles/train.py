@@ -37,7 +37,7 @@ def main():
                       args, ensemble=True)
     optimizer = get_optimizer(model, args)
 
-    checkpointer = CheckPointer(args, model=model, optimizer=optimizer)
+    checkpointer = CheckPointer('ensembles', args, model=model, optimizer=optimizer)
     if os.path.isfile(checkpointer.last_ckpt) and args['train.resume']:
         start_epoch, best_val_loss, best_val_acc, waiting_for =\
             checkpointer.restore_model(ckpt='last')

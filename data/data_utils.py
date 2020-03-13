@@ -55,14 +55,14 @@ def get_mini_imagenet_transform_augmented(backbone, mode, aug_dict):
 
     transform_list = []
     if backbone == 'deep':
-        resize, crop_size = None, 224
+        resize, crop_size = 256, 224
     elif backbone == 'wide':
         resize, crop_size = 92, 80
     else:
         resize, crop_size = 96, 84
+    print(resize, crop_size)
 
-    if resize:
-        transform_list.append(transforms.Resize(resize))
+    transform_list.append(transforms.Resize(resize))
 
     TrimFn = transforms.RandomCrop if train else transforms.CenterCrop
     transform_list.append(TrimFn(crop_size))

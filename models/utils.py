@@ -101,12 +101,11 @@ class CheckPointer(object):
 
 
 class EnsembleCheckPointer(object):
-    def __init__(self, args, model=None, optimizer=None):
+    def __init__(self, folder, args, model=None, optimizer=None):
         self.model = model
         self.optimizer = optimizer
         self.args = args
-        self.model_path = os.path.join(PROJECT_ROOT, 'ensembles',
-                                       'models',
+        self.model_path = os.path.join(PROJECT_ROOT, folder, 'models',
                                        args['model.dataset'],
                                        args['model.model_name'])
         self.last_ckpt = os.path.join(self.model_path, 'checkpoint.pth.tar')
